@@ -1,0 +1,395 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.cdnfonts.com/css/dm-sans" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js"></script>
+    <title>Kayıt Ol</title>
+</head>
+
+<body>
+
+    <form id="registerform" method="post">
+
+        <div class="registercontentpart">
+            <h1 class="registertitle">Kayıt Olun</h1>
+            <div class="registerposition">
+                <div class="w-50">
+                    <label class="registerlabel " for="registernamesurnameinput"> Adınız ve Soyadınız </label>
+                    <input type="text" id="registernamesurnameinput" name="namesurname" class="registerinput" required minlength="6">
+                </div>
+
+                <div class="w-50">
+                    <label class="registerlabel " for="registeremailinput" > E-posta adresinizi yazınız </label>
+                    <input type="email" id="registeremailinput" name="email"  class="registerinput" autocomplete="off" required>
+                </div>
+            </div>
+
+            <div class="registerposition">
+                <div class="w-50">
+                    <label class="registerlabel " for="registerpasswordinput">Bir şifre belirleyiniz</label>
+                    <div class="registerinputpart">
+                        <input type="password" id="registerpasswordinput" name="password" class="registerinput" required>
+                        <span class="registereye" id="registertogglebtn"> </span>
+
+                        </input>
+                    </div>
+
+                    <div class="registerpasswordvalidation">
+                        <ul>
+                            <li id="length" class="invalid">8 ila 30 karakterden oluşmalı.</li>
+                            <li id="number" class="invalid">En az 1 tane rakam bulunmalı.</li>
+                            <li id="specialcharacter" class="invalid">En az 1 tane özel karakter bulunmalı (örneğin
+                                !#$&+).</li>
+                            <li id="upper" class="invalid">En az 1 tane büyük harf bulunmalı.</li>
+                        </ul>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="w-50">
+
+                    <label class="registerlabel " for="registerpasswordagaininput"> Bir şifre belirleyiniz</label>
+                    <div class="registerinputpart">
+                        <input type="password" id="registerpasswordagaininput" name="passwordagain" class="registerinput" required>
+                        <span id="registertogglebtnagain" class="registereye"></span>
+                        </input>
+
+                    </div>
+                    <div class="registerpasswordvalidation">
+                        <ul>
+                            <li id="lengthagain" class="invalid">8 ila 30 karakterden oluşmalı.</li>
+                            <li id="numberagain" class="invalid">En az 1 tane rakam bulunmalı.</li>
+                            <li id="specialcharacteragain" class="invalid">En az 1 tane özel karakter bulunmalı (örneğin
+                                !#$&+).</li>
+                            <li id="upperagain" class="invalid">En az 1 tane büyük harf bulunmalı.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="registerposition">
+
+                <div class="w-50">
+                    <label class="registerlabel " > Çocuğun ismi? </label>
+                    <input type="text" class="registerinput" name="childname" required minlength="2">
+                </div>
+
+                <div class="w-50">
+                    <label class="registerlabel "> Çocuğun Doğum Tarihi?</label>
+                    <input type="date" class="registerinput" name="childbday" placeholder="Seçiniz" required>
+                </div>
+
+            </div>
+
+
+            <div class="registerposition">
+
+                <div class="w-50">
+                    <label class="registerlabel "> Çocuğunuzun Cinsiyeti? </label>
+                    <div class="registerchildbutton">
+                        <input type="button" class="registerchildgenderbutton" name="childboy" value="Erkek">
+                        <input type="button" class="registerchildgenderbutton" name="childgirl" value="Kız">
+                    </div>
+                </div>
+
+
+                <div class="w-50">
+                    <div>
+                        <span></span>
+                    </div>
+                    <div>
+                        <span class="registernewchild"><img src="assets/images/svg/error_purple.svg"
+                                class="register_error">Kayıt sonrası yeni çocuk kayıtları oluşturabilirsiniz.</span>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="registerfifthpart">
+                <input type="checkbox" class="registercheckbox" id="registercheckbx" required>
+                <span class="registertermsofusetext"><a class="registertermsofusetextlink" href="termsofuse.html">
+                        Kullanım Koşullarını ve Gizlilik Sözleşmesini </a></span>
+                <span class="registerreadaccept"> okudum, kabul ediyorum.</span>
+
+            </div>
+
+            <div id="registersixthpart">
+
+                <input type="submit" class="registerbutton" id="registerbuttonid" value="Kayıt Ol">
+
+            </div>
+        </div>
+
+        <script>
+
+            function emailvalidation() {
+
+                const mail = document.getElementById('registeremailinput').value;
+                const regx = /^([a-z 0-9\.-]+)@([a-z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})? $/;
+                mail.onclick = emailvalidation(); {
+
+                    if (regx.registerbuttonid(mail)) {
+                        return true;
+                    }
+
+                    else {
+                        alert("Lütfen E-posta Adresinizi Doğru Giriniz!");
+                    }
+
+                }
+            }
+
+
+
+            let password = document.getElementById('registerpasswordinput');
+            let togglebutton = document.getElementById('registertogglebtn');
+
+            let passwordagain = document.getElementById('registerpasswordagaininput');
+            let togglebuttonagain = document.getElementById('registertogglebtnagain');
+
+
+            togglebutton.onclick = function () {
+                if (password.type === 'password') {
+                    password.type = 'text';
+                    togglebutton.classList.add('hide');
+                } else {
+                    password.type = 'password';
+                    togglebutton.classList.remove('hide');
+                }
+            };
+
+            togglebuttonagain.onclick = function () {
+                if (passwordagain.type === 'password') {
+                    passwordagain.type = 'text';
+                    togglebuttonagain.classList.add('hide');
+                } else {
+                    passwordagain.type = 'password';
+                    togglebuttonagain.classList.remove('hide');
+                }
+            };
+
+            //
+            var namesurname = document.getElementById("registernamesurnameinput");
+            var mail = document.getElementById("registeremailinput");
+
+            var passwordinput = document.getElementById("registerpasswordinput");
+            var passwordagaininput = document.getElementById("registerpasswordagaininput");
+
+            var childname = document.getElementById("registerchildnameinput");
+            var childbday = document.getElementById("registerchildbday");
+
+            var childboy = document.getElementById("registerchildboy");
+            var childgirl = document.getElementById("registerchildgirl");
+
+            var submitBtn = document.getElementById("registerbuttonid");
+
+            var length = document.getElementById("length");
+            var lengthagain = document.getElementById("lengthagain");
+
+            var digit = document.getElementById("number");
+            var digitagain = document.getElementById("numberagain");
+
+            var specialchar = document.getElementById("specialcharacter");
+            var specialcharagain = document.getElementById("specialcharacteragain");
+
+            var upperCase = document.getElementById("upper");
+            var upperCaseagain = document.getElementById("upperagain");
+
+            var submitBtn = document.getElementById("registerbuttonid");
+
+            submitBtn.addEventListener("click", function () {
+                if (passwordinput.value === passwordagaininput.value) {
+
+                } else {
+                    alert("ŞİFRELER EŞLEŞMİYOR! AYNI ŞİFREYİ GİRDİĞİNİZDEN EMİN OLUNUZ.")
+                }
+            });
+
+
+            //1. PASSWORD INPUT
+
+
+
+            passwordinput.addEventListener("keyup", function () {
+                var passwordLength = passwordinput.value.length;
+
+                if (passwordLength >= 8 && passwordLength <= 31) {
+                    length.classList.remove("invalid");
+                    length.classList.add("valid");
+                } else {
+                    length.classList.remove("valid");
+                    length.classList.add("invalid");
+                }
+            });
+
+
+            passwordinput.addEventListener("keyup", function () {
+                var passwordValue = passwordinput.value;
+                var hasDigit = /\d/.test(passwordValue);
+
+                if (hasDigit) {
+                    digit.classList.remove("invalid");
+                    digit.classList.add("valid");
+                } else {
+                    digit.classList.remove("valid");
+                    digit.classList.add("invalid");
+                }
+            });
+
+            passwordinput.addEventListener("keyup", function () {
+                var passwordValue = passwordinput.value;
+                var hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(passwordValue);
+
+                if (hasSpecialChar) {
+                    specialchar.classList.remove("invalid");
+                    specialchar.classList.add("valid");
+                } else {
+                    specialchar.classList.remove("valid");
+                    specialchar.classList.add("invalid");
+                }
+            });
+
+            passwordinput.addEventListener("keyup", function () {
+                var passwordValue = passwordinput.value;
+                var hasUpperCase = /[A-Z]/.test(passwordValue); // Büyük harf kontrolü
+
+                if (hasUpperCase) {
+                    upperCase.classList.remove("invalid");
+                    upperCase.classList.add("valid");
+                } else {
+                    upperCase.classList.remove("valid");
+                    upperCase.classList.add("invalid");
+                }
+            });
+
+            //2.PASSWORD INPUT
+
+
+            passwordagaininput.addEventListener("keyup", function () {
+                var passwordLength = passwordagaininput.value.length;
+
+                if (passwordLength >= 8 && passwordLength <= 31) {
+                    lengthagain.classList.remove("invalid");
+                    lengthagain.classList.add("valid");
+                } else {
+                    lengthagain.classList.remove("valid");
+                    lengthagain.classList.add("invalid");
+                }
+            });
+
+
+            passwordagaininput.addEventListener("keyup", function () {
+                var passwordValue = passwordagaininput.value;
+                var hasDigit = /\d/.test(passwordValue);
+
+                if (hasDigit) {
+                    digitagain.classList.remove("invalid");
+                    digitagain.classList.add("valid");
+                } else {
+                    digitagain.classList.remove("valid");
+                    digitagain.classList.add("invalid");
+                }
+            });
+
+            passwordagaininput.addEventListener("keyup", function () {
+                var passwordValue = passwordagaininput.value;
+                var hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(passwordValue);
+
+                if (hasSpecialChar) {
+                    specialcharagain.classList.remove("invalid");
+                    specialcharagain.classList.add("valid");
+                } else {
+                    specialcharagain.classList.remove("valid");
+                    specialcharagain.classList.add("invalid");
+                }
+            });
+
+            passwordagaininput.addEventListener("keyup", function () {
+                var passwordValue = passwordagaininput.value;
+                var hasUpperCase = /[A-Z]/.test(passwordValue); // Büyük harf kontrolü
+
+                if (hasUpperCase) {
+                    upperCaseagain.classList.remove("invalid");
+                    upperCaseagain.classList.add("valid");
+                } else {
+                    upperCaseagain.classList.remove("valid");
+                    upperCaseagain.classList.add("invalid");
+                }
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+            const submitbutton = document.getElementById("registerbuttonid");
+            submitbutton.addEventListener("click", function() {
+                const form = document.getElementById("registerform");
+                const formData = new FormData(form);
+
+                const jsonData = {};
+                formData.forEach((value, key) => {
+                    jsonData[key] = value;
+                });
+
+                const jsonResult = JSON.stringify(jsonData, null, 2);
+                alert(jsonResult); 
+            });
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    // Kayıt formunun submit olayını dinleyelim
+    const registerForm = document.getElementById("registerform");
+    registerForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Formun otomatik olarak gönderilmesini engelliyoruz.
+
+        // API'ye gönderilecek verileri formdan alalım
+        const formData = new FormData(registerForm);
+
+        // API isteği için gerekli ayarları yapalım
+        const apiUrl = "http://api.kidokit.com/swagger-ui/index.html?url=/api-kidokit#/account-controller/registerV2"; // API URL'si
+        const requestOptions = {
+            method: "POST", // İstek tipi (GET, POST, vb.)
+            body: formData, // Form verilerini isteğe ekleyelim
+        };
+
+        // API isteğini gönderelim
+        fetch(apiUrl, requestOptions)
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error("HTTP Hatası: " + response.status);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        // API'den gelen verileri işle
+        console.log("API'den gelen veriler:", data);
+    })
+    .catch((error) => {
+        // Hata yakalama ve konsola yazdırma
+        console.error("API isteği sırasında hata oluştu:", error);
+    });
+    });
+});
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
