@@ -346,20 +346,21 @@
 
 
         document.addEventListener("DOMContentLoaded", function () {
-    // Kayıt formunun submit olayını dinleyelim
+    
     const registerForm = document.getElementById("registerform");
     registerForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Formun otomatik olarak gönderilmesini engelliyoruz.
+        event.preventDefault(); 
 
-        // API'ye gönderilecek verileri formdan alalım
+        
         const formData = new FormData(registerForm);
 
-        // API isteği için gerekli ayarları yapalım
-        const apiUrl = "http://api.kidokit.com/swagger-ui/index.html?url=/api-kidokit#/account-controller/registerV2"; // API URL'si
-        const requestOptions = {
-            method: "POST", // İstek tipi (GET, POST, vb.)
-            body: formData, // Form verilerini isteğe ekleyelim
-        };
+       
+        const apiUrl = "http://api.kidokit.com/api-kidokit"; // Gerçek API URL'sini kullanın
+const requestOptions = {
+    method: "GET", // GET isteği gönderilecekse
+    // Eğer bir gövde (body) gerekmiyorsa body özelliğini kaldırabilirsiniz.
+    // body: formData, 
+};
 
         // API isteğini gönderelim
         fetch(apiUrl, requestOptions)
@@ -370,11 +371,11 @@
         return response.json();
     })
     .then((data) => {
-        // API'den gelen verileri işle
+        
         console.log("API'den gelen veriler:", data);
     })
     .catch((error) => {
-        // Hata yakalama ve konsola yazdırma
+        
         console.error("API isteği sırasında hata oluştu:", error);
     });
     });
